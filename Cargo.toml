@@ -1,8 +1,8 @@
 [package]
 name = "duolingo-query"
 authors = ["mist64_"]
-keywords = ["duolingo", "streak", "api", "language"]
-version = "0.1.4"
+keywords = ["duolingo", "streak", "api", "unofficial"]
+version = "0.1.41"
 description = "A teeny tiny unofficial library for getting user information on duolingo"
 repository = "https://github.com/misten1/duolingo-query"
 license = "MIT"
