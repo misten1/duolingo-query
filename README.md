@@ -1,9 +1,7 @@
 # duolingo-query
-_____________
-#### > A rust library to easily grab duolingo users' profile information through the unofficial duolingo api
-_____________
+A *teeny tiny* rust library to query duolingo users' profile information through the unofficial Duolingo API
 
-### Examples
+### Example
 
 ````rust
 // Query information about a duolingo user
@@ -33,5 +31,5 @@ println!("Has Duolingo Plus: {}", duo.get_has_plus());
 println!("{}", "-".repeat(10));
 ````
 
-### Warning
-> #### This library is sensitive to api changes and as such might break if duolingo updates their api
+### API Warning
+> #### ⚠️ This library is sensitive to api changes and as such might break if duolingo updates their api
