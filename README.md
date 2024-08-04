@@ -9,7 +9,7 @@ A *teeny tiny* rust library to query duolingo users' profile information through
 // Query information about a duolingo user
 let duo = Duolingo::query("christi3").await?;
 
-// Print information about users
+// Print information about user's streaks
 println!("{}", "-".repeat(10));
 println!("Streak: {}", duo.get_streak());
 println!("Uid: {}", duo.get_id());
@@ -17,7 +17,7 @@ println!("Uid: {}", duo.get_id());
 // Dates are unix timestamps
 println!("Creation date: {}", duo.get_creation_date());
 
-// Print information about the user's streaks
+// Print information about the user's courses
 duo.get_courses().iter().for_each(|course| {
     println!("{}", "-".repeat(10));
     println!("Course: {}", course.get_title());

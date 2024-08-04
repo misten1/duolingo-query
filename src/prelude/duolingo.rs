@@ -77,7 +77,7 @@ impl Duolingo {
         self.user_profile.id
     }
 
-    pub fn get_has_plus(&self) -> bool {
+    pub fn has_plus(&self) -> bool {
         self.user_profile.has_plus
     }
 
