@@ -29,7 +29,7 @@ println!("{}", "-".repeat(10));
 println!("Total XP: {}", duo.get_total_xp());
 println!("Username: {}", duo.get_username());
 println!("Learning language: {}", duo.get_learning_language());
-println!("Has Duolingo Plus: {}", duo.get_has_plus());
+println!("Has Duolingo Plus: {}", duo.has_plus());
 println!("{}", "-".repeat(10));
 ````
 
