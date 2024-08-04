@@ -1,4 +1,6 @@
 # duolingo-query
+![Crates.io Version](https://img.shields.io/crates/v/duolingo-query?style=flat)
+
 A *teeny tiny* rust library to query duolingo users' profile information through the unofficial Duolingo API
 
 ### Example
