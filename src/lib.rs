@@ -12,7 +12,7 @@ mod duolingo_tests {
     #[tokio::test]
     async fn api_test() -> anyhow::Result<()> {
         // Query information about a duolingo user
-        let duo = Duolingo::query("christi3").await?;
+        let duo = Duolingo::query("wyreeeeeeig").await?;
 
         // Print information about users
         println!("{}", "-".repeat(10));
@@ -34,7 +34,7 @@ mod duolingo_tests {
         println!("Total XP: {}", duo.get_total_xp());
         println!("Username: {}", duo.get_username());
         println!("Learning language: {}", duo.get_learning_language());
-        println!("Has Duolingo Plus: {}", duo.get_has_plus());
+        println!("Has Duolingo Plus: {}", duo.has_plus());
         println!("{}", "-".repeat(10));
 
         Ok(())

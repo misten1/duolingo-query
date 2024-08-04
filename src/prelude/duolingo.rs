@@ -36,7 +36,7 @@ pub struct UserProfile {
     learning_language: String,
     #[serde(rename = "subscriberLevel")]
     subscriber_level: String,
-    name: String,
+    name: Option<String>,
     username: String,
 }
 
@@ -117,7 +117,7 @@ impl Duolingo {
         &self.user_profile.subscriber_level
     }
 
-    pub fn get_name(&self) -> &str {
+    pub fn get_name(&self) -> &Option<String> {
         &self.user_profile.name
     }
 
