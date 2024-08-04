@@ -65,7 +65,7 @@ impl Duolingo {
         Ok(Duolingo { user_profile })
     }
 
-    fn get_roles(&self) -> &Vec<String> {
+    pub fn get_roles(&self) -> &Vec<String> {
         &self.user_profile.roles
     }
 
