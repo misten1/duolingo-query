@@ -2,7 +2,8 @@
 name = "duolingo-query"
 authors = ["mist64_"]
 version = "0.1.0"
-description = "An unofficial library for getting user information on duolingo"
+description = "A teeny tiny unofficial library for getting user information on duolingo"
+repository = "https://github.com/misten1/duolingo-query"
 license = "MIT"
 edition = "2021"
 
