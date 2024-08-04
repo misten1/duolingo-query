@@ -45,24 +45,35 @@ impl Duolingo {
 
     // Query information about a duolingo user
     pub async fn query(username: &str) -> anyhow::Result<Duolingo> {
-        let client = Client::new();
+        let uid = Self::get_user_uid(username).await?;
+        Self::query_internal(uid).await
+    }
 
-        let id = "{id}";
+    // Query information about a duolingo with uid
+    pub async fn query_with_uid(id: u64) -> anyhow::Result<Duolingo> {
+        Self::query_internal(id).await
+    }
+
+    async fn query_internal(id: u64) -> anyhow::Result<Duolingo> {
+        let client = Client::new();
         let time = stamp();
-        let uid_endpoint = format!("https://www.duolingo.com/2017-06-30/users?fields={id}&username={username}&_={time}");
+        let tmp = "{currentStreak,previousStreak}";
+        let data_endpoint = format!("https://www.duolingo.com/2017-06-30/users/{id}?fields=courses,creationDate,fromLanguage,gemsConfig,globalAmbassadorStatus,hasPlus,id,learningLanguage,location,name,picture,privacySettings,roles,streak,streakData{tmp},subscriberLevel,totalXp,username&_={time}");
+        let request = client.get(data_endpoint).build()?;
+        let response = client.execute(request).await?;
+        let user_profile = response.json::<UserProfile>().await.expect("Error parsing userprofile, This could be a misspelling in the username or duolingo's API updated");
+        Ok(Duolingo { user_profile })
+    }
+
+    // Get user id
+    pub async fn get_user_uid(username: &str) -> anyhow::Result<u64> {
+        let client = Client::new();
+        let time = stamp();
+        let uid_endpoint = format!("https://www.duolingo.com/2017-06-30/users?username={username}&_={time}");
         let request = client.get(uid_endpoint).build()?;
         let result = client.execute(request).await?;
         let user_response = result.json::<UsersResponse>().await?;
-        let uid = user_response.users.first().unwrap().id;
-
-        let time = stamp();
-        let tmp = "{currentStreak,previousStreak}";
-        let data_endpoint = format!("https://www.duolingo.com/2017-06-30/users/{uid}?fields=courses,creationDate,fromLanguage,gemsConfig,globalAmbassadorStatus,hasPlus,id,learningLanguage,location,name,picture,privacySettings,roles,streak,streakData{tmp},subscriberLevel,totalXp,username&_={time}");
-        let request = client.get(data_endpoint).build()?;
-        let response = client.execute(request).await?;
-        let user_profile = response.json::<UserProfile>().await.expect("Error parsing userprofile, This could be a misspelling in the username or duolingo's api updated");
-
-        Ok(Duolingo { user_profile })
+        Ok(user_response.users.first().unwrap().id)
     }
 
     pub fn get_roles(&self) -> &Vec<String> {
