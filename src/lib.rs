@@ -12,7 +12,7 @@ mod duolingo_tests {
     #[tokio::test]
     async fn api_test() -> anyhow::Result<()> {
         // Query information about a duolingo user
-        let duo = Duolingo::query("wyreeeeeeig").await?;
+        let duo = Duolingo::query("christi3").await?;
 
         // Print information about users
         println!("{}", "-".repeat(10));
