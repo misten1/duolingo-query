@@ -35,3 +35,4 @@ println!("{}", "-".repeat(10));
 
 ### API Warning
 > #### ⚠️ This library is sensitive to api changes and as such might break if duolingo updates their api
+> #### Please don't hesitate to create an issue if the duolingo api changes
